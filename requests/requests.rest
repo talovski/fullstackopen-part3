@@ -1,0 +1,22 @@
+// get all persons
+GET http://localhost:3001/api/persons/
+###
+
+
+//get a person
+GET http://localhost:3001/api/persons/3
+
+###
+// delete a person
+DELETE http://localhost:3001/api/persons/2
+###
+
+
+//post a person
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Nika T",
+    "number": "8779"
+}
