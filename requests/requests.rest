@@ -4,11 +4,11 @@ GET http://localhost:3001/api/persons/
 
 
 //get a person
-GET http://localhost:3001/api/persons/3
+GET http://localhost:3001/api/persons/60243c57e44d704c6af4837b
 
 ###
 // delete a person
-DELETE http://localhost:3001/api/persons/2
+DELETE http://localhost:3001/api/persons/60243c57e44d704c6af4837b
 ###
 
 
@@ -18,5 +18,5 @@ Content-Type: application/json
 
 {
     "name": "Nika T",
-    "number": "8779"
+    "number": "877889"
 }
