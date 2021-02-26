@@ -1,16 +1,16 @@
-const notesRouter = require("express").Router();
-const Person = require("../models/person");
+const notesRouter = require('express').Router();
+const Person = require('../models/person');
 
 // Get all people
-notesRouter.get("/", (request, response, next) => {
+notesRouter.get('/', (request, response, next) => {
   Person.find({}).then((people) => {
     response.json(people.map((person) => person.toJSON()));
   });
 });
 
 // Find one person by id
-notesRouter.get("/:id", (request, response, next) => {
-  console.log("searching by id");
+notesRouter.get('/:id', (request, response, next) => {
+  console.log('searching by id');
   Person.findById(request.params.id)
     .then((person) => {
       if (person) {
@@ -23,15 +23,15 @@ notesRouter.get("/:id", (request, response, next) => {
 });
 
 // Delete person by id
-notesRouter.delete("/:id", (request, response, next) => {
+notesRouter.delete('/:id', (request, response, next) => {
   Person.findByIdAndRemove(request.params.id).then((person) => {
     response.status(204).end();
   });
 });
 
 // Add person
-notesRouter.post("/", (request, response) => {
-  const body = request.body;
+notesRouter.post('/', (request, response) => {
+  const { body } = request;
   const person = new Person({
     name: body.name,
     number: body.number,
@@ -46,8 +46,8 @@ notesRouter.post("/", (request, response) => {
 });
 
 // Update number of one person who is already in the phonebook
-notesRouter.put("/:id", (request, response, next) => {
-  const body = request.body;
+notesRouter.put('/:id', (request, response, next) => {
+  const { body } = request;
 
   const person = {
     name: body.name,

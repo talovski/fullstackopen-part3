@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+/* eslint-disable no-restricted-globals */
 const url = process.env.MONGODB_URI;
+const mongoose = require('mongoose');
 
 mongoose.connect(url, {
   useNewUrlParser: true,
@@ -13,9 +14,9 @@ const personSchema = new mongoose.Schema({
   name: String,
   number: String,
 });
-const Person = mongoose.model("Person", personSchema);
+const Person = mongoose.model('Person', personSchema);
 
-//list all if no name and number
+// list all if no name and number
 if (process.argv.length === 3) {
   Person.find({}).then((result) => {
     result.forEach((note) => {
@@ -25,17 +26,17 @@ if (process.argv.length === 3) {
   });
 } else if (process.argv.length === 5) {
   const person = new Person({
-    name: name,
-    number: number,
+    name,
+    number,
   });
   person.save().then((result) => {
     console.log(`${name} with ${number} was added to the phonebook`);
     mongoose.connection.close();
   });
 } else if (process.argv.length === 4) {
-  console.log("please provide both name and number");
+  console.log('please provide both name and number');
   mongoose.connection.close();
 } else {
-  console.log("please provide password, name and number");
+  console.log('please provide password, name and number');
   mongoose.connection.close();
 }
